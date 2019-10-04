@@ -12,8 +12,8 @@ namespace EventOrganizerKata.Test
         public void GetEventsAndOverlappingIntervals_ValidData_ReturnsOverlap()
         {
             var eventList = new List<Event>();
-            DateTime.TryParse("2009-06-15 16:32:00", out var date1);
-            DateTime.TryParse("2009-06-15 17:32:00", out var date2);
+            var date1 = new DateTime(2009, 06, 15, 16, 32, 0);
+            var date2 = new DateTime(2009, 06, 15, 16, 32, 0);
             eventList.Add(new Event("A", date1, date2));
             eventList.Add(new Event("B", date1, date2));
             var expected = new List<string> { "A overlapping with B between 2009-06-15 16:32:00 and 2009-06-15 17:32:00"};
