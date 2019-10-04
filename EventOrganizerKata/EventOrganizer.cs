@@ -12,7 +12,7 @@ namespace EventOrganizerKata
             this.EventList = events;
         }
 
-        public List<string> GetEventsAndOverlappingIntervals()
+        public List<string> FindOverlappingIntervals()
         {
             if (EventList == null)
                 return null;

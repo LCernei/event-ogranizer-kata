@@ -17,9 +17,9 @@ namespace EventOrganizerKata
             List<Event> eventList = fileReader.GetEvents();
 
             EventOrganizer eo = new EventOrganizer(eventList);
-            List<string> eventAndOrelappingList = eo.GetEventsAndOverlappingIntervals();
+            List<string> eventAndOrelappingList = eo.FindOverlappingIntervals();
 
-            Console.Write(eventAndOrelappingList.);
+            Console.Write(string.Join("\n", eventAndOrelappingList));
 
         }
     }

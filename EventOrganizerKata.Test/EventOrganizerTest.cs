@@ -18,7 +18,7 @@ namespace EventOrganizerKata.Test
             var expected = new List<string> { "A overlapping with B between 2009-06-15 17:30:00 and 2009-06-15 18:30:00"};
             var eo = new EventOrganizer(new List<Event> {event1, event2});
             
-            var actual = eo.GetEventsAndOverlappingIntervals();
+            var actual = eo.FindOverlappingIntervals();
 
             actual.Should().BeEquivalentTo(expected);
         }
@@ -31,7 +31,7 @@ namespace EventOrganizerKata.Test
             var expected = new List<string>();
             var eo = new EventOrganizer(eventList);
 
-            var actual = eo.GetEventsAndOverlappingIntervals();
+            var actual = eo.FindOverlappingIntervals();
 
             actual.Should().BeEmpty();
         }
@@ -41,7 +41,7 @@ namespace EventOrganizerKata.Test
         {
             var eo = new EventOrganizer(null);
 
-            var actual = eo.GetEventsAndOverlappingIntervals();
+            var actual = eo.FindOverlappingIntervals();
 
             actual.Should().BeNull();
         }
