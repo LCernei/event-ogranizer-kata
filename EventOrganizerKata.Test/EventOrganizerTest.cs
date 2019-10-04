@@ -11,17 +11,16 @@ namespace EventOrganizerKata.Test
         [Fact]
         public void GetEventsAndOverlappingIntervals_ValidData_ReturnsOverlap()
         {
-            var eventList = new List<Event>();
-            var date1 = new DateTime(2009, 06, 15, 16, 32, 0);
-            var date2 = new DateTime(2009, 06, 15, 16, 32, 0);
-            eventList.Add(new Event("A", date1, date2));
-            eventList.Add(new Event("B", date1, date2));
-            var expected = new List<string> { "A overlapping with B between 2009-06-15 16:32:00 and 2009-06-15 17:32:00"};
-            var eo = new EventOrganizer(eventList);
-
+            var date11 = new DateTime(2009, 06, 15, 17, 30, 0);
+            var date12 = new DateTime(2009, 06, 15, 18, 30, 0);
+            var event1 = new Event("A", date11, date12);
+            var event2 = new Event("B", date11, date12);
+            var expected = new List<string> { "A overlapping with B between 2009-06-15 17:30:00 and 2009-06-15 18:30:00"};
+            var eo = new EventOrganizer(new List<Event> {event1, event2});
+            
             var actual = eo.GetEventsAndOverlappingIntervals();
 
-            actual.Should().Equals(expected);
+            actual.Should().BeEquivalentTo(expected);
         }
 
         [Fact]
@@ -40,9 +39,7 @@ namespace EventOrganizerKata.Test
         [Fact]
         public void GetEventsAndOverlappingIntervals_Null_ReturnsNull()
         {
-            List<Event> eventList = null;
-
-            var eo = new EventOrganizer(eventList);
+            var eo = new EventOrganizer(null);
 
             var actual = eo.GetEventsAndOverlappingIntervals();
 
