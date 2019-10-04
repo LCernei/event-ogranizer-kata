@@ -4,11 +4,11 @@ using System.Text;
 
 namespace EventOrganizerKata
 {
-    public class FileEventService
+    public class FileReader
     {
         private string FileToRead;
 
-        public FileEventService(string fileName)
+        public FileReader(string fileName)
         {
             this.FileToRead = fileName;
         }

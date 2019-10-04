@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace EventOrganizerKata
 {
@@ -7,16 +8,18 @@ namespace EventOrganizerKata
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello");
-            FileEventService fileData = new FileEventService(@"C:\Users\lcernei\source\repos\EventOrganizerKata\EventOrganizerKata\data.txt");
+            var projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+            var resourcesPath = Path.Combine(projectPath, "Resources");
+            string filePath = Path.Combine(resourcesPath, "data.txt");
 
-            List<Event> events = fileData.GetEvents();
+            FileReader fileReader = new FileReader(filePath);//Properties.Resources.data
 
-            EventOrganizer eo = new EventOrganizer(events);
-            List<string> items = eo.GetEventsAndOverlappingIntervals();
+            List<Event> eventList = fileReader.GetEvents();
 
-            foreach (string item in items)
-                Console.WriteLine(item);
+            EventOrganizer eo = new EventOrganizer(eventList);
+            List<string> eventAndOrelappingList = eo.GetEventsAndOverlappingIntervals();
+
+            Console.Write(eventAndOrelappingList.);
 
         }
     }
