@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using EventOrganizerKata;
+using FluentAssertions;
 using Xunit;
 
 namespace EventOrganizerKata.Test
@@ -20,7 +21,7 @@ namespace EventOrganizerKata.Test
 
             var actual = eo.GetEventsAndOverlappingIntervals();
 
-            Assert.Equal(expected, actual);
+            actual.Should().Equals(expected);
         }
 
         [Fact]
@@ -33,7 +34,7 @@ namespace EventOrganizerKata.Test
 
             var actual = eo.GetEventsAndOverlappingIntervals();
 
-            Assert.Equal(expected, actual);
+            actual.Should().BeEmpty();
         }
 
         [Fact]
@@ -45,7 +46,7 @@ namespace EventOrganizerKata.Test
 
             var actual = eo.GetEventsAndOverlappingIntervals();
 
-            Assert.Null(actual);
+            actual.Should().BeNull();
         }
     }
 }
