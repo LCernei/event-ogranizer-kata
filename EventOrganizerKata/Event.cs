@@ -29,7 +29,7 @@ namespace EventOrganizerKata
             var overlapStart = new DateTime(Math.Max(this.StartTime.Ticks, newEvent.StartTime.Ticks));
             var overlapEnd = new DateTime(Math.Min(this.EndTime.Ticks, newEvent.EndTime.Ticks));
             
-            return new Event("overlap", overlapStart, overlapEnd);
+            return new Event("", overlapStart, overlapEnd);
         }
     }
 }

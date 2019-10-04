@@ -14,6 +14,8 @@ namespace EventOrganizerKata
 
         public List<string> GetEventsAndOverlappingIntervals()
         {
+            if (EventList == null)
+                return null;
             var eventsAndIntervalsList = new List<string>();
             for (int i = 0; i < EventList.Count - 1; i++)
             {
